@@ -12,7 +12,6 @@ convert_admonition_to_table <- function(text) {
   testthat::expect_true(stringr::str_detect(heading, "\\!\\!\\!"))
 
   admonition_type <- stringr::str_split(heading, pattern = " ")[[1]][2]
-  testthat::expect_equal(admonition_type, "warning")
   adminition_title <- stringr::str_sub(
     stringr::str_flatten(
       stringr::str_split(heading, pattern = " ")[[1]][c(-1, -2)],
@@ -28,7 +27,12 @@ convert_admonition_to_table <- function(text) {
   # Admonition text
   admonition_text <- stringr::str_sub(text[c(-1, -2)], start = 5)
 
-  emoji <- paste0(":", admonition_type, ":")
+  if (is_md_table_text(admonition_text)) {
+    return(admonition_text)
+  }
+
+  emoji <- get_admonition_type_emoji(admonition_type)
+
   n_chars_longest_line <- max(
     stringr::str_length(admonition_text),
     stringr::str_length(adminition_title)

@@ -18,6 +18,7 @@ VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/mkdocs2md
 BugReports: https://github.com/richelbilderbeek/mkdocs2md/issues
 Imports:
+    readr,
     stringr
 Suggests:
     knitr,

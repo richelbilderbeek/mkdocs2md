@@ -17,7 +17,7 @@ test_that("use", {
   expect_equal(created, expected)
 })
 
-test_that("use", {
+test_that("use two-liner", {
 
   text <- c(
     "!!! warning \"Admonition title\"",
@@ -35,5 +35,25 @@ test_that("use", {
     ":warning:|Admonition text line 2"
   )
 
+  expect_equal(created, expected)
+})
+
+test_that("use table", {
+
+  text <- c(
+    "!!! warning \"Admonition title\"",
+    "",
+    "    Column1|Column2",
+    "    -------|-------",
+    "    Value1 |Value2"
+  )
+
+  created <- convert_admonition_to_table(text)
+
+  expected <- c(
+    "Column1|Column2",
+    "-------|-------",
+    "Value1 |Value2"
+  )
   expect_equal(created, expected)
 })
