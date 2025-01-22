@@ -1,12 +1,27 @@
 Package: mkdocs2md
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
+Title: Convert MkDocs to markdown
+Version: 0.1
+Authors@R: c(
+  person("Richèl J.C.", "Bilderbeek", email = "rjcbilderbeek@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049"))
+  )
+Description: MkDocs is a popular website generator
+  that converts markdown to static HTML.
+  MkDocs extends markdown.
+  However, these markdown extensions are unknown
+  to tools that convert markdown to other text
+  formats.
+  This package allows one to convert the MkDocs
+  markdown extensions to regular markdown.
+License: GPL-3
 RoxygenNote: 7.3.2
+VignetteBuilder: knitr
+URL: https://github.com/richelbilderbeek/mkdocs2md
+BugReports: https://github.com/richelbilderbeek/mkdocs2md/issues
+Imports:
+    stringr
+Suggests:
+    knitr,
+    markdown,
+    testthat (>= 2.1.0)
+Language: en-US
+Encoding: UTF-8
