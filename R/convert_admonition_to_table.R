@@ -9,7 +9,16 @@ convert_admonition_to_table <- function(text) {
 
   # Heading
   heading <- text[1]
-  testthat::expect_true(stringr::str_detect(heading, "\\!\\!\\!"))
+
+
+  admonition_visibility <- stringr::str_split(heading, pattern = " ")[[1]][1]
+  testthat::expect_true(
+    admonition_visibility %in% c("!!!", "???", "???-", "???+")
+  )
+
+  if (admonition_visibility == "???-") {
+    return(rep("", length(text)))
+  }
 
   admonition_type <- stringr::str_split(heading, pattern = " ")[[1]][2]
   adminition_title <- stringr::str_sub(

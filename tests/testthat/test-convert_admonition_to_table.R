@@ -1,4 +1,4 @@
-test_that("use", {
+test_that("use on three exclamation marks", {
 
   text <- c(
     "!!! warning \"Admonition title\"",
@@ -12,6 +12,44 @@ test_that("use", {
     ":warning:|Admonition title",
           "---|----------------",
     ":warning:|Admonition text"
+  )
+
+  expect_equal(created, expected)
+})
+
+test_that("use on three question marks and a plus", {
+
+  text <- c(
+    "???+ warning \"Admonition title\"",
+    "",
+    "    Admonition text"
+  )
+
+  created <- convert_admonition_to_table(text)
+
+  expected <- c(
+    ":warning:|Admonition title",
+          "---|----------------",
+    ":warning:|Admonition text"
+  )
+
+  expect_equal(created, expected)
+})
+
+test_that("use on three question marks and a minus", {
+
+  text <- c(
+    "???- warning \"Admonition title\"",
+    "",
+    "    Admonition text"
+  )
+
+  created <- convert_admonition_to_table(text)
+
+  expected <- c(
+    "",
+    "",
+    ""
   )
 
   expect_equal(created, expected)
