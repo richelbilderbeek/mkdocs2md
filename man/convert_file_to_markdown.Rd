@@ -22,3 +22,13 @@ Nothing
 Convert a file with MkDocs extended markdown
 to a markdown-only file
 }
+\examples{
+# Get an example MkDocs file
+mkdocs_filename <- system.file("extdata", "example_1.md", package = "mkdocs2md")
+
+# Save it to a temporary file
+md_filename <- tempfile()
+
+# Do the conversion
+convert_file_to_markdown(mkdocs_filename, md_filename)
+}

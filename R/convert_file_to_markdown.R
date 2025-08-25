@@ -5,6 +5,15 @@
 #' @param keep_tags \link{TRUE} if the tags need to be preserved,
 #'   \link{TRUE} if these need to be replaced by empty lines,
 #' @return Nothing
+#' @examples
+#' # Get an example MkDocs file
+#' mkdocs_filename <- system.file("extdata", "example_1.md", package = "mkdocs2md")
+#'
+#' # Save it to a temporary file
+#' md_filename <- tempfile()
+#'
+#' # Do the conversion
+#' convert_file_to_markdown(mkdocs_filename, md_filename)
 #' @export
 convert_file_to_markdown <- function(
   mkdocs_filename,

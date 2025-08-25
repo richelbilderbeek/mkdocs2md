@@ -8,3 +8,16 @@
 <!-- markdownlint-enable MD013 -->
 
 R package to convert MkDocs markdown to regular markdown
+
+## Installation
+
+```bash
+install.packages("remotes")
+remotes::install_github("richelbilderbeek/mkdocs2md")
+```
+
+## Usage
+
+```
+
+```

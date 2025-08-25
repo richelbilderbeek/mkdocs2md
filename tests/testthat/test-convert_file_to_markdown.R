@@ -1,4 +1,4 @@
-test_that("use", {
+test_that("minimal use", {
   mkdocs_filename <- tempfile()
   md_filename <- tempfile()
 
@@ -21,4 +21,11 @@ test_that("use", {
     readr::read_lines(md_filename),
     convert_text_to_markdown(text)
   )
+})
+
+test_that("example file", {
+  mkdocs_filename <- system.file("extdata", "example_1.md", package = "mkdocs2md")
+  md_filename <- tempfile()
+  convert_file_to_markdown(mkdocs_filename, md_filename)
+  expect_true(file.exists(md_filename))
 })
