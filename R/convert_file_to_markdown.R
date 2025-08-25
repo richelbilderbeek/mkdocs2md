@@ -20,11 +20,22 @@ convert_file_to_markdown <- function(
   md_filename,
   keep_tags = TRUE
 ) {
+  tryCatch(
+    {
+      text <- convert_text_to_markdown(
+        readr::read_lines(mkdocs_filename),
+        keep_tags = keep_tags
+      )
+    },
+    error = function(msg) {
+      stop(
+        "Error: \nUnexpected MkDocs text in file '", mkdocs_filename, "'",
+        ", with error message: \n", msg
+      )
+    }
+  )
   readr::write_lines(
-    convert_text_to_markdown(
-      readr::read_lines(mkdocs_filename),
-      keep_tags = keep_tags
-    ),
+    text,
     md_filename
   )
 }

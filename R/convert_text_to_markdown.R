@@ -27,7 +27,18 @@ convert_text_to_markdown <- function(
       admonition_end <- length(text)
     }
     admonition_text <- text[admonition_start:admonition_end]
-    table_text <- convert_admonition_to_table(admonition_text)
+    tryCatch(
+      {
+        table_text <- convert_admonition_to_table(admonition_text)
+      },
+      error = function(msg) {
+        stop(
+          "Error: \nUnexpected MkDocs text in lines ", admonition_start, " to ",
+          admonition_end, ", with message: \n", msg
+        )
+      }
+    )
+
     if (length(table_text) < length(admonition_text)) {
       # The admonition contained a table: converting this removes
       # the title
