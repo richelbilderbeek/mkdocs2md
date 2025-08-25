@@ -213,3 +213,31 @@ test_that("use of tags should preserve tables", {
   expect_equal(created, expected)
 
 })
+
+test_that("use of a figure", {
+  text <- c(
+    "# Title",
+    "",
+    "!!! info \"Admonition title\"",
+    "",
+    "    ![Figure caption](figure.png)",
+    "",
+    "Regular text"
+  )
+
+  # keep_tags is irrelevant
+  created <- convert_text_to_markdown(text)
+
+  expected <- c(
+    "# Title",
+    "",
+    ":information_source:|Admonition title",
+    "---|-----------------------------",
+    ":information_source:|![Figure caption](figure.png)",
+    "",
+    "Regular text"
+  )
+
+  expect_equal(created, expected)
+
+})

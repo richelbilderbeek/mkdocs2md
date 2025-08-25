@@ -63,6 +63,7 @@ convert_text_tags_to_markdown <- function(
     pattern = "^---$"
   )
   testthat::expect_equal(0, length(tags_indices) %% 2)
+  if (length(tags_indices) == 0) return(text)
   from_indices <- tags_indices[seq(1, length(tags_indices) - 1, 2)]
   to_indices   <- tags_indices[seq(2, length(tags_indices) - 0, 2)]
   testthat::expect_equal(length(from_indices), length(to_indices))
